@@ -1,0 +1,14 @@
+Single responsibility priciple 
+-> one function should have and serve one purpose only 
+-> If one component serves multiple purpose we should break it down into various component adn segregate the purpose
+-> custom hook used for creating hook that serve a purpose 
+
+
+done -> custom hook 
+
+→ useronlinestatus 
+
+→ useRestaurantInfo implemented in restaurantcardmenu component
+
+code splitting , chunking , dynamic bundling , lazy loading all are terms for 1 concept only and implemented in this chapter
+implemented with the help of suspens and lazy and import function 

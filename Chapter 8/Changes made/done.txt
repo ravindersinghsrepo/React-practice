@@ -1,0 +1,11 @@
+-> explored class based componenets 
+-> component life cycle 
+-> componentDidMount
+-> componentDidUpdate
+-> componentWillUnMount
+
+
+-> on About page add info off the website 
+-> add user profile page -> User component
+-> on User page make api call to call the user data 
+api.github.com/user/akshay7

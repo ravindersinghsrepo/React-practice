@@ -1,0 +1,25 @@
+→ makes routes  → using the react-router-dom  , 
+
+→ createBrowserRouter used for creating the routes 
+
+[{ path : , element : , } ]
+
+→ create about us ,  contact and error page 
+
+on the error page use useRouteError hook for extracting the error information 
+
+→ implement child routes 
+
+→ use outlet and RouterProvider also 
+
+→ implement the links over home , about , contact us with <Link/>
+
+2 types of routing in the web page 
+
+1) client side routing
+
+2) server side routing
+
+Made restaurant cards clickable 
+restaurant page with details displayed 
+useParams hooks used for accessing the params in the header

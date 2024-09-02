@@ -1,0 +1,31 @@
+
+higher order component → withpromoted label implemented , instead i created nearby label 
+
+created item category list in resturant menu
+-> itemlist component
+-> category componenet
+-> Built accordian functionality 
+
+useContext hook done , UserContext is context created with the help of createContext . With the help of this created context the values created is used for other componenets like we showed user as default user in each restaurant card and in the header component and also on the about us page 
+
+{Following syntax we used in a class component for consuming the context}
+<UserContext.consumer> 
+{(data)=>{<h1>{data.loggedInUser}</h1>}}
+</userContext.consumer>
+
+this data that we extracted above is coming from userContext and it kind of a default value , 
+
+we will override this value with a new value with the help of 
+<UserContext.Provider value={loggedInUser:username}>
+<Component/>
+</userContext.Provider>
+
+username was a new state in the app component
+we also send the function that changes username from app to body component where we implemented an input box , 
+in the input box we modify the value of username with the help of sent function from the app component with the help of usercontext.Provider
+for <Component/> the value of loggedInUser will be username 
+
+-Its preffered to use context concept in a small project 
+for large scale project we use redux library 
+
+

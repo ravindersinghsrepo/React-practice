@@ -1,0 +1,97 @@
+Redux is a library , 
+React and redux is different 
+redux is used for state managment 
+react redux is the bridge between react and redux 
+redux toolkit is the latest way of writing the redux 
+3 problems with older redux 
+-> it was very complicated (configuring ths redux store is complicated )
+-> we had to add many pakages to do anything useful with redux 
+-> redux requires too much boiler plate code 
+
+Redux toolkit 
+- Install @reduxjs/toolkit and react-redux
+- Build our own store 
+     with the help of configurestore -> const appStore = configureStore({}) // will give us our store of react application 
+
+     creating a store job is done by redux/toolkit and providing this store to the application is done by react-redux
+
+     a store all also have a reducer just like a slice  , here reducer is a combination of different small stores 
+
+- Connect our store to our app by following code : 
+   -<Provider store={appStore}>
+    <div className="app">
+    <userContext.Provider value={{userloggedIn:userName}}>
+    <Header/>
+    </userContext.Provider>
+    <Outlet/>
+    </div>
+    </Provider>
+- Slice(cart slice)
+        -created by createSlice function that comes from the redux toolkit 
+        -> createSlice takes a configuration 
+        -> reducer function modifies the slice of the store (store slice that stores the store data inside it )
+- Dispatch action 
+- Selector 
+  // subscribing to the store using our selector 
+    const cart = useSelector((store)=>store.cart.items) 
+    -> here we are reading the store by subscribing to a particular part of the store (cart.items)
+
+
+    when user clicks the add button -> dispatch the action (useDispatch) -> which calls the reducer method in return and that makes modifies the slice 
+
+ by doing 
+ const dispatch = useDispatch() ; 
+  function handleAddItem(){
+    // dispatch an action
+    dispatch(addItem('pizza')); 
+  }
+
+  behind the scenes the redux toolkit is creating and object 
+  and adding payload key in it and corresponding to that the pizza item and adding thisin the reducer of cart slice
+  {
+    payload : 'pizza'
+    
+  }
+
+  Cart page also implemented , on that we also implemented clear button 
+
+  when we are using the useSelector make sure you are subscribing to the right portion of the store 
+  for ex -> 
+  const const cartItems = useSelector((store)=>store.cart.items) ; 
+  we can also do 
+  const store = useSelector((store)=>store);
+  const cartItems = store.cart.items;
+
+cart will detect all the changes in store 
+store has all slices 
+changes in any other slice which is unrelated to cart will also be detected by the cart here which will effect the performance therefore 1st method is performance efficient
+
+
+In older redux , the redux used to say dont mutate the state 
+return the state was mandatory 
+
+In redux-toolkit , we have to mutate/modify the state 
+returning the state is not mandatory 
+
+
+redux toolkit uses immer js behind the scenes . 
+immer js basically compares the diff between old and new state and then gives us a new state object 
+
+
+to clear the cart we do : 
+
+bcz if we do state = [] that wont work , 
+the state that is passed in clearCart function is different actually , 
+we can check that by 
+
+clearCart : (state, action )=>{
+           console.log(state);// we get proxy object (we cant read this )
+           console.log(current(state))// we can read the original state now 
+           state = [] // here we are assigning the new reference to state // which does not modifies original state 
+           so we do :
+           state.item.length = 0 
+           or we do 
+           return {items:[]}
+            
+
+        }
